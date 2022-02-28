@@ -3,7 +3,7 @@ import { useState } from "react";
 function App() {
   return (
     <div className="App">
-      <h1>Olá Mundo</h1>
+      <h1>Consumir API</h1>
     </div>
   );
 }
