@@ -2,13 +2,13 @@ import axios from "axios";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 
-type Reporitory = {
+export type Repository = {
   full_name: string;
   description: string;
 };
 
 export function Repos() {
-  const { data, isFetching } = useQuery<Reporitory[]>(
+  const { data, isFetching } = useQuery<Repository[]>(
     "repos",
     async () => {
       const response = await axios.get(
@@ -25,8 +25,8 @@ export function Repos() {
   return (
     <ul>
       {isFetching && <p>Carregando...</p>}
-      {data?.map((repo) => (
-        <li key={repo.full_name}>
+      {data?.map((repo, index) => (
+        <li key={index}>
           <Link to={`repo/${repo.full_name}`}>{repo.full_name}</Link>
           <p>{repo.description}</p>
         </li>
