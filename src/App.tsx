@@ -7,7 +7,7 @@ type Reporitory = {
 
 function App() {
   const { data: repositories, isFetching } = useFetch<Reporitory[]>(
-    "https://api.github.com/users/pedromakengo/repos"
+    "users/pedromakengo/repos"
   );
   return (
     <ul>
