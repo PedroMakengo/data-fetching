@@ -10,8 +10,18 @@ export function Repo() {
 
   async function handleChangeRepositoryDescription() {
     // Chamada API para atualizar a descrição do repositório
+    const previousRepos = queryClient.getQueryData<Repository[]>("repos");
+    if (previousRepos) {
+      const nextRepos = previousRepos.map((repo) => {
+        if (repo.full_name === currentRepository) {
+          return { ...repo, description: "Testando" };
+        } else {
+          return repo;
+        }
+      });
 
-    const previousRepos = queryClient.getQueriesData<Repository[]>("repos");
+      queryClient.setQueryData("repos", nextRepos);
+    }
   }
 
   return (
